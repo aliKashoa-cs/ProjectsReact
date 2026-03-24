@@ -1,59 +1,72 @@
-import {useState} from 'react';
-import Note from './components/Note.jsx'
-const App = (props) => {
-    const [notes, setNotes] = useState(props.notes)
-    const [newNote, setNewNote] = useState(
-        'a new note...'
-    )
-    const [showAll, setShowAll] = useState(true)
+import React, { useState } from 'react';
+import Navbar from './components/NavBar.jsx';
+import './style.css'; // Optional: for the main layout styles
+import Dashboard from './components/Dashboard.jsx';
+// --- Dummy Page Components ---
+// const Dashboard = () => (
+//     <div className="page-content">
+//         <h1>Welcome back, AK! 👋</h1>
+//         <p>Here is an overview of your recent learning activity.</p>
+//         {/* You would add your charts or summary cards here */}
+//     </div>
+// );
 
+const Units = () => (
+    <div className="page-content">
+        <h1>Your Units</h1>
+        <p>Select a module to continue learning.</p>
+    </div>
+);
 
-    const addNote = (event) => {
-        event.preventDefault()
-        const noteObject = {
-            content: newNote,
-            important: Math.random() < 0.5,
-            id: String(notes.length + 1),
+const Assignments = () => (
+    <div className="page-content">
+        <h1>Pending Assignments</h1>
+        <p>You have 2 assignments due this week.</p>
+    </div>
+);
+
+const Exams = () => (
+    <div className="page-content">
+        <h1>Upcoming Exams</h1>
+        <p>No exams scheduled for the next 7 days. Take a breather!</p>
+    </div>
+);
+
+const Materials = () => (
+    <div className="page-content">
+        <h1>Study Materials</h1>
+        <p>Browse PDFs, slides, and recorded lectures.</p>
+    </div>
+);
+
+// --- Main App Component ---
+function App() {
+    // We moved the state here! Now the whole app knows the active tab.
+    const [currentView, setCurrentView] = useState('Dashboard');
+
+    // A simple function to render the correct component
+    const renderContent = () => {
+        switch (currentView) {
+            case 'Dashboard': return <Dashboard />;
+            case 'Units': return <Units />;
+            case 'Assignments': return <Assignments />;
+            case 'Exams': return <Exams />;
+            case 'Materials': return <Materials />;
+            default: return <Dashboard />;
         }
-
-        setNotes(notes.concat(noteObject))
-        setNewNote('')
-    }
-
-
-    const handleNoteChange = (event) => {
-        console.log(event.target.value)
-        setNewNote(event.target.value)
-    }
-
-
-    const notesToShow = showAll
-        ? notes
-        : notes.filter(note => note.important === true)
-
+    };
 
     return (
-        <div>
-            <h1>Notes</h1>
-            <div>
-                <button onClick={() => setShowAll(!showAll)}>
-                    show {showAll ? 'important' : 'all'}
-                </button>
-            </div>
-            <ul>
-                {notesToShow.map(note =>
-                    <Note key={note.id} note={note} />
-                )}
-            </ul>
-            <form onSubmit={addNote}>
-                <input
-                    value={newNote}
+        <div className="app-container">
+            {/* Pass the state and the updater function as props to the Navbar */}
+            <Navbar activeTab={currentView} setActiveTab={setCurrentView} />
 
-                    onChange={handleNoteChange}
-                />
-                <button type="submit">save</button>
-            </form>
+            {/* The main content area below the navbar */}
+            <main className="main-layout">
+                {renderContent()}
+            </main>
         </div>
-    )
+    );
 }
-export default App
+
+export default App;

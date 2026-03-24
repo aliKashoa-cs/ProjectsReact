@@ -1,0 +1,50 @@
+.assignment-item {
+    display: flex;
+    align-items: center;
+    background-color: #fafafa; /* Very light gray background */
+    border: 1px solid #eeeeee;
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-bottom: 12px; /* Space between assignments */
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.assignment-item:hover {
+    background-color: #f1f3f5;
+}
+
+/* The SVG icon container */
+.assignment-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+/* The text container */
+.assignment-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.assignment-title {
+    margin: 0;
+    font-size: 15px;
+    color: #333333;
+    font-weight: 500;
+}
+
+.assignment-author {
+    margin: 0;
+    font-size: 14px;
+    color: #9bd3d4; /* The light teal text from your mockup */
+}
+
+/* Time remaining text pushed to the far right */
+.assignment-time {
+    margin-left: auto;
+    font-size: 14px;
+    color: #444444;
+}

@@ -1,0 +1,34 @@
+.announcement-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Keeps the text lines tightly packed */
+    margin-bottom: 24px; /* Adds breathing room between different announcements */
+}
+
+.announcement-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Share the same styling for both date and author */
+.announcement-date,
+.announcement-author {
+    margin: 0;
+    font-size: 14px;
+    color: #333333;
+}
+
+/* Style the title to look like the teal link from the image */
+.announcement-title {
+    margin: 0;
+    font-size: 14px;
+    color: #129d9e; /* Teal link color */
+    text-decoration: none; /* Removes the default blue underline */
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+/* Add a standard hover effect so users know it's clickable */
+.announcement-title:hover {
+    text-decoration: underline;
+    color: #0d7a7b; /* Slightly darker teal on hover */
+}

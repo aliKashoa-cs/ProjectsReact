@@ -1,0 +1,51 @@
+.unit-item {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa; /* The light gray box background */
+    border: 1px solid #e9ecef; /* Very subtle border */
+    border-radius: 6px;
+    padding: 12px;
+    gap: 16px;
+    margin-bottom: 16px; /* Space between multiple unit items */
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+/* Optional: Slight hover effect to make it feel clickable */
+.unit-item:hover {
+    background-color: #f1f3f5;
+}
+
+/* The colored square */
+.unit-color-box {
+    width: 70px;
+    height: 60px;
+    border-radius: 6px;
+    flex-shrink: 0; /* Prevents the box from squishing if the text gets too long */
+}
+
+/* The text container */
+.unit-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Space between the text lines */
+}
+
+.unit-title {
+    margin: 0;
+    font-size: 14px;
+    color: #88c3c4; /* The light teal text color from your image */
+    font-weight: 500;
+}
+
+.unit-instructor {
+    margin: 0;
+    font-size: 14px;
+    color: #333333;
+}
+
+.unit-progress {
+    margin: 0;
+    font-size: 13px;
+    color: #666666;
+}
