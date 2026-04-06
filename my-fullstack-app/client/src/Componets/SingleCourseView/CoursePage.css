@@ -1,0 +1,46 @@
+/* CoursePage.css */
+
+/* --- Mobile First Layout (Default) --- */
+.course-page-layout {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column; /* Stacks items vertically on mobile */
+    align-items: center;    /* Centers the card horizontally */
+    gap: 3rem;
+    margin-top: -50px;      /* Pulls the card slightly up over the banner on mobile */
+    position: relative;
+    z-index: 10;
+    direction: rtl;         /* Ensures Arabic layout */
+}
+
+/* Centers the card perfectly on mobile */
+.course-page-sidebar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.course-page-main {
+    width: 100%;
+}
+
+/* --- Desktop Layout (Screens wider than 1024px) --- */
+@media (min-width: 1024px) {
+    .course-page-layout {
+        flex-direction: row-reverse; /* MAGIC: Puts the Card on the Left, List on the Right */
+        align-items: flex-start;
+        margin-top: -160px; /* Pulls the card MUCH higher over the banner */
+    }
+
+    .course-page-sidebar {
+        width: auto;
+        flex: 0 0 auto;
+    }
+
+    .course-page-main {
+        flex: 1 1 600px;
+        padding-top: 160px; /* Pushes the List down so it doesn't overlap the banner text */
+    }
+}

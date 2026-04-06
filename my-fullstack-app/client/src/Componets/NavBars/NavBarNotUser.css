@@ -1,0 +1,251 @@
+/* =========================================
+   Color Variables
+   ========================================= */
+:root {
+    --tropical-teal: #4CB5AE;
+    --frosted-blue: #81D6E3;
+    --icy-blue: #B2DDF7;
+    --vibrant-coral: #FF5D5D;
+    --lilac: #BF9CBA;
+}
+
+/* =========================================
+   Base Navbar Styles
+   ========================================= */
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 3px solid var(--icy-blue);
+    height: 80px;
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    z-index: 1000;
+    direction: rtl; /* RTL enforcement */
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+
+    /* THE FIXES */
+    margin: 0 auto; /* Forces the container to stay dead center */
+    box-sizing: border-box; /* Prevents padding from breaking the 100% width */
+}
+
+.navbar-logo a {
+    color: var(--tropical-teal);
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 0px;
+}
+
+/* =========================================
+   Navigation Links
+   ========================================= */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+}
+
+.nav-links {
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-links:hover {
+    color: var(--frosted-blue);
+}
+
+/* =========================================
+   Dropdown Styles
+   ========================================= */
+.dropdown {
+    position: relative;
+    /* Ensures the mouse area covers the gap to the menu */
+    padding-bottom: 20px;
+    margin-bottom: -20px;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 1rem;
+    /* Prevent text highlighting on mobile double-tap */
+    user-select: none;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Starts exactly at the bottom of the nav bar */
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid var(--icy-blue);
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0.5rem 0;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-link {
+    display: block;
+    padding: 10px 20px;
+    color: var(--tropical-teal);
+    text-decoration: none;
+    text-align: right;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-link:hover {
+    background-color: var(--icy-blue);
+    color: var(--tropical-teal);
+}
+
+/* =========================================
+   Buttons
+   ========================================= */
+.navbar-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+button {
+    cursor: pointer;
+    padding: 8px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.btn-login {
+    background-color: transparent;
+    color: var(--lilac);
+    border: 2px solid var(--lilac);
+}
+
+.btn-login:hover {
+    background-color: var(--lilac);
+    color: #ffffff;
+}
+
+.btn-signup {
+    background-color: var(--vibrant-coral);
+    color: #ffffff;
+    border: 2px solid var(--vibrant-coral);
+}
+
+.btn-signup:hover {
+    background-color: #e04c4c;
+    border-color: #e04c4c;
+}
+
+/* =========================================
+   Mobile Elements (Hidden on Desktop)
+   ========================================= */
+.mobile-menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    color: var(--tropical-teal);
+    cursor: pointer;
+}
+
+.mobile-buttons {
+    display: none;
+}
+
+/* =========================================
+   Responsive Media Queries (Mobile View)
+   ========================================= */
+@media screen and (max-width: 960px) {
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: calc(100vh - 80px);
+
+        /* THE FIX: Change this from 'absolute' to 'fixed' */
+        position: fixed;
+
+        top: 80px;
+        right: 0;
+        transform: translateX(100%);
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.4s ease-in-out;
+        background-color: #ffffff;
+        padding-top: 2rem;
+        gap: 1.5rem;
+        border-left: 3px solid var(--icy-blue);
+        overflow-y: auto;
+    }
+    /* ... rest of the media query ... */
+    .nav-menu.active {
+        /* Slide back into view */
+        transform: translateX(0);
+        visibility: visible;
+        opacity: 1;
+        z-index: 999;
+    }
+
+    .navbar-buttons {
+        display: none;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    .mobile-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 80%;
+        margin: 1rem auto 2rem auto;
+    }
+
+    .dropdown {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        /* Static position pushes elements down naturally on mobile */
+        position: static;
+        box-shadow: none;
+        border: none;
+        background-color: transparent;
+        border-right: 3px solid var(--frosted-blue); /* Arabic indentation line */
+        border-radius: 0;
+        margin: 10px 20px 0 0; /* Indent inward for RTL */
+        padding: 0;
+        width: auto;
+    }
+
+    .dropdown-link {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+}

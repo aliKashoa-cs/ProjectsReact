@@ -1,0 +1,60 @@
+/* CoursesHeader.css */
+.courses-header-section {
+    width: 100%;
+    padding: 4rem 1.5rem; /* Adds space above and below */
+    background-color: #ffffff; /* Clean white background */
+    display: flex;
+    justify-content: center;
+    direction: rtl; /* Right to left for Arabic */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.section-title-wrapper {
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* Space between the rows */
+}
+
+/* Flexbox trick to put lines on the sides of the text */
+.title-divider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* Space between text and lines */
+}
+
+.divider-line {
+    height: 1px;
+    background-color: #93c5fd; /* Light blue lines */
+    width: 50px; /* Length of the lines */
+}
+
+.subtitle-text {
+    color: #38bdf8; /* Light blue text matching the lines */
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.main-heading {
+    color: #0f172a; /* Very dark blue/slate */
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.sub-heading {
+    color: #64748b; /* Subtle gray */
+    font-size: 1.125rem;
+    margin: 0;
+}
+
+/* Make the main heading slightly bigger on larger screens */
+@media (min-width: 768px) {
+    .main-heading {
+        font-size: 2.25rem;
+    }
+}

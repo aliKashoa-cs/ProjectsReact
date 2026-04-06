@@ -1,0 +1,177 @@
+/* ContentListItem.css */
+.list-item-wrapper {
+    background-color: #f8fafc;
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden; /* Keeps the rounded corners intact when expanded */
+    transition: background-color 0.2s ease;
+}
+
+/* Header Styling */
+.list-item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    box-sizing: border-box;
+}
+
+.list-item-header.clickable {
+    cursor: pointer;
+}
+
+.list-item-header.clickable:hover {
+    background-color: #f1f5f9;
+}
+
+/* The blue background slightly darkens when the accordion is open */
+.list-item-wrapper.is-open {
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+.list-item-wrapper.is-open .list-item-header {
+    background-color: #f8fafc; /* Keep header slightly grey */
+}
+
+/* Right Side Elements */
+.list-item-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.lesson-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.chevron-icon {
+    flex-shrink: 0;
+    transition: transform 0.3s ease; /* Smooth spin animation */
+}
+
+.chevron-icon.rotated {
+    transform: rotate(180deg); /* Flips the arrow pointing up */
+}
+
+/* Left Side Elements */
+.list-item-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.topic-count {
+    font-size: 0.95rem;
+    color: #0ea5e9;
+    font-weight: 500;
+}
+
+.lock-icon {
+    margin-left: 0.5rem;
+}
+
+.sample-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: #bae6fd;
+    color: #0284c7;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.completion-circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid #cbd5e1;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.completion-circle.completed {
+    background-color: #0ea5e9;
+    border-color: #0ea5e9;
+}
+
+.completion-circle.small {
+    width: 18px;
+    height: 18px;
+}
+
+/* === Expanded Dropdown Body === */
+.list-item-body {
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-top: 1px solid #f1f5f9;
+}
+
+.body-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.body-title {
+    font-weight: 600;
+    color: #334155;
+    font-size: 1rem;
+}
+
+.body-progress {
+    display: flex;
+    gap: 1rem;
+    color: #94a3b8;
+    font-size: 0.85rem;
+    direction: ltr; /* English text should be LTR */
+}
+
+/* Sub-lessons Styling */
+.sub-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sub-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.sub-item-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.sub-item-title {
+    font-size: 0.95rem;
+    color: #0f172a;
+    font-weight: 500;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .list-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .list-item-left {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
